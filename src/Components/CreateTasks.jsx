@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { TasksContext } from "../store/TasksContext";
 import { useNavigate } from "react-router";
-import { CiSaveUp2 } from "react-icons/ci";
 
 const CreateTasks = () => {
   const { addTasks } = useContext(TasksContext);
@@ -27,16 +26,6 @@ const CreateTasks = () => {
       return;
     }
 
-    // let totalDuration = 0;
-    // const hoursMatch = duration.match(/(\d+)\s*hours?/);
-    // const minutesMatch = duration.match(/(\d+)\s*minutes?/);
-  
-    // if (hoursMatch) {
-    //   totalDuration += parseInt(hoursMatch[1], 10) * 3600;
-    // }
-    // if (minutesMatch) {
-    //   totalDuration += parseInt(minutesMatch[1], 10) * 60;
-    // }
     const newTask = {
       title,
       duration,
@@ -51,22 +40,22 @@ const CreateTasks = () => {
     navigate("/");
   };
   return (
-    <center>
+    <>
       <form
-        className="form"
+        className="bg-gray-200 shadow-xl text-black rounded-lg w-96 text-center px-4 py-4 font-bold duration-300 hover:-translate-y-1"
         onSubmit={handleAddTask}
         action="/upload"
         method="post"
         encType="multipart/form-data"
       >
-        <p>Add Your New Routine Work</p>
-        <div className="form-content-container">
-        <input type="text" ref={titleElement} placeholder="enter new task" />
-        <input type="text" placeholder="enter time duration"
+        <h1 className="my-2 font-bold text-2xl">Add Your New Task Work</h1>
+        <div className="flex flex-wrap justify-between text-white">
+        <input className="w-40 rounded py-1 px-2  mb-2 font-semibold   text-black" type="text" ref={titleElement} placeholder="Title..." />
+        <input className="w-40 mb-2 rounded py-1 px-2 font-semibold  text-black"  type="text" placeholder="Time duration... "
           ref={durationElement}
            />
-        <input type="date" ref={dueDateElement} placeholder="Enter due date" ></input>
-        <select name="tasks" id="tasks" ref={categoryElement}>
+        <input className="w-40 rounded py-1 px-2 font-normal   text-black"  type="date" ref={dueDateElement} placeholder="Enter due date" ></input>
+        <select name="tasks" id="tasks" ref={categoryElement} className="w-40 rounded py-1 px-2 font-normal text-black" >
           <option value="No category">No Category</option>
           <option value="work">Work</option>
           <option value="personal">Personal</option>
@@ -74,9 +63,9 @@ const CreateTasks = () => {
           <option value="birthday">Birthday</option>
         </select>
         </div>
-        <button className="save-tasks-btn btn"><CiSaveUp2 /></button>
+        <button className="py-1 px-3 rounded mt-4 hover:-translate-y-1 duration-300 bg-emerald-500 hover:bg-emerald-600 text-white">Save</button>
       </form>
-    </center>
+    </>
   );
 };
 

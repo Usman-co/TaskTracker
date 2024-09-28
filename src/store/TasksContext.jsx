@@ -47,13 +47,13 @@ export const TasksProvider = ({ children }) => {
   //   fetchTasks();
   // }, []);
   
+  
+  
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const response = await fetch("http://localhost:3000/tasks");
         const data = await response.json();
-  
-        // Optional: Ensure fetched tasks have valid durations and elapsed times
         const validatedData = data.map((task) => ({
           ...task,
           duration: task.duration || 0,
@@ -101,7 +101,6 @@ export const TasksProvider = ({ children }) => {
   };
   
   const updateTask = (updatedTask) => {
-    console.log("Updating task:", updatedTask); // Debugging
     fetch(`http://localhost:3000/tasks/${updatedTask.id}`, {
       method: "PUT",
       headers: {

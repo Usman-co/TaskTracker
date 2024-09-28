@@ -16,57 +16,57 @@ const Category = () => {
 
   return (
     <>
-    <div className="buttons">
-      <div className="buttons-container">
-        <div>
-          <button className="btn" onClick={() => handleCategoryClick("All")}>
+    <div className=" rounded px-5 py-5 w-full bg-emerald-500 ">
+      <ul className="flex justify-evenly mb-4 text-white">
+        {/* <div> */}
+          <li className="cursor-pointer bg-black py-2 px-4 rounded-xl hover:-translate-y-1 duration-300 hover:bg-gray-200 hover:text-black" onClick={() => handleCategoryClick("All")}>
             All
-          </button>
-        </div>
-        <div>
+          </li>
+        {/* </div> */}
+        {/* <div> */}
           
-          <button className="btn" onClick={() => handleCategoryClick("work")}>
+          <li className="cursor-pointer bg-black py-2 px-4 rounded-xl hover:-translate-y-1 duration-300 hover:bg-gray-200 hover:text-black" onClick={() => handleCategoryClick("work")}>
             Work
-          </button>
-        </div>
-        <div>
+          </li>
+        {/* </div> */}
+        {/* <div> */}
           
-          <button
-            className="btn"
+          <li
+            className="cursor-pointer bg-black py-2 px-4 rounded-xl hover:-translate-y-1 duration-300 hover:bg-gray-200 hover:text-black"
             onClick={() => handleCategoryClick("personal")}
           >
             Personal
-          </button>
-        </div>
-        <div>
-          <button
-            className="btn"
+          </li>
+        {/* </div> */}
+        {/* <div> */}
+          <li
+            className="cursor-pointer bg-black py-2 px-4 rounded-xl hover:-translate-y-1 duration-300 hover:bg-gray-200 hover:text-black"
             onClick={() => handleCategoryClick("birthday")}
           >
             Birthday
-          </button>
-        </div>
-        <div>
-          <button
-            className="btn"
+          </li>
+        {/* </div> */}
+        {/* <div> */}
+          <li
+            className="cursor-pointer bg-black py-2 px-4 rounded-xl hover:-translate-y-1 duration-300 hover:bg-gray-200 hover:text-black"
             onClick={() => handleCategoryClick("wishlist")}
           >
             Wishlist
-          </button>
-        </div>
-      </div>
+          </li>
+        {/* </div> */}
+      </ul>
 
-      <div className="tasks-container">
+      <div className="grid grid-cols-3 ">
         {filteredTasks.length > 0 ? (
           filteredTasks.map((task) => (
-            <div key={task.id} className="task-card">
+            <div key={task.id} className="my-2 w-72 px-2 py-2  rounded-xl text-center text-black hover:shadow hover:-translate-y-2 hover:bg-black hover:text-white mb-4 duration-300 bg-gray-200 shadow-2xl">
               <h3>{task.title}</h3>
               <p>Category: {task.category}</p>
               <p>Due Date: {task.dueDate}</p>
             </div>
           ))
         ) : (
-          <p>No tasks found for this category.</p>
+          <p className="text-white text-center">No tasks found for this category.</p>
         )}
       </div>
     </div>

@@ -1,90 +1,43 @@
-import React from "react";
-import { useNavigate } from "react-router";
-import { BiCategory } from "react-icons/bi";
-import { MdOutlineHome } from "react-icons/md";
-import { GiProgression } from "react-icons/gi";
+// import React from "react";
+// import { useNavigate } from "react-router";
+// import { BiCategory } from "react-icons/bi";
+// import { MdOutlineHome } from "react-icons/md";
+// import { GiProgression } from "react-icons/gi";
 
-const WelcomMessage = () => {
-  // const { tasksList } = useContext(TasksContext);
-  // const [selectedCategory, setSelectedCategory] = useState("All");
+// const WelcomMessage = () => {
+//   const navigate = useNavigate();
+//   return (
+//     <>
+//       <div className="flex">
+//         <div className="h-screen w-16 bg-gray-800 flex flex-col justify-start items-center py-4">
+//           <button
+//             className="category-btn text-white text-2xl p-4 hover:bg-gray-700 w-full"
+//             onClick={() => navigate("/")}
+//           >
+//             <MdOutlineHome />
+//           </button>
+//           <button
+//             className="category-btn text-white text-2xl p-4 hover:bg-gray-700 w-full"
+//             onClick={() => navigate("/category")}
+//           >
+//             <BiCategory />
+//           </button>
+//           <button
+//             className="category-btn text-white text-2xl p-4 hover:bg-gray-700 w-full"
+//             onClick={() => navigate("/task-status")}
+//           >
+//             <GiProgression />
+//           </button>
+//         </div>
+//         <div className="flex justify-center w-full bg-gradient-to-r from-teal-500 via-green-500 to-pink-500 h-20 text-white ">
+//         <h1 className="">
+//           Hi 🙋‍♂️ Usman! Let’s add tasks 👨‍💻 to make the day easier
+//         </h1>
+//       </div>
+//         <div className="flex-grow p-4">{/* Your main content goes here */}</div>
+//       </div>
+//     </>
+//   );
+// };
 
-  // const handleCategoryClick = (category) => {
-  //   setSelectedCategory(category);
-  // };
-
-  // const filteredTasks =
-  //   selectedCategory === "All"
-  //     ? tasksList
-  //     : tasksList.filter((task) => task.category === selectedCategory);
-
-  const navigate = useNavigate()
-  return (
-    <>
-      <div className="welcome-msg">
-        <h1 >
-        Hi 🙋‍♂️ Usman! Let’s add tasks 👨‍💻 to make the day easier
-        </h1>
-        <div className="icons-container">
-        <button className="category-btn " onClick={() => navigate('/')}><MdOutlineHome/></button>
-        <button className="category-btn " onClick={() => navigate('/category')}><BiCategory/></button>
-        <button className="category-btn " onClick={() => navigate('/task-status')}><GiProgression/></button>
-        </div>
-        {/* <div className="buttons-container">
-          <div>
-            <button className="btn" onClick={() => handleCategoryClick("All")}>
-              All
-            </button>
-          </div>
-          <div>
-            
-            <button className="btn" onClick={() => handleCategoryClick("work")}>
-              
-              Work
-            </button>
-          </div>
-          <div>
-            
-            <button
-              className="btn"
-              onClick={() => handleCategoryClick("personel")}
-            >
-              Personel
-            </button>
-          </div>
-          <div>
-            <button
-              className="btn"
-              onClick={() => handleCategoryClick("birthday")}
-            >
-              Birthday
-            </button>
-          </div>
-          <div>
-            <button
-              className="btn"
-              onClick={() => handleCategoryClick("wishlist")}
-            >
-              Wishlist
-            </button>
-          </div>
-        </div>
-
-        <div className="tasks-container">
-          {filteredTasks.length > 0 ? (
-            filteredTasks.map((task) => (
-              <div key={task.id} className="task-card">
-                <h3>{task.title}</h3>
-                <p>Category: {task.category}</p>
-                <p>Due Date: {task.dueDate}</p>
-              </div>
-            ))
-          ) : (
-            <p>No tasks found for this category.</p>
-          )}
-        </div> */}
-      </div>
-    </>
-  );
-};
-
-export default WelcomMessage;
+// export default WelcomMessage;
