@@ -17,7 +17,7 @@ const CreateTasks = () => {
     const duration = durationElement.current.value;
     const dueDate = dueDateElement.current.value;
     const category = categoryElement.current.value;
-
+console.log('new code')
     titleElement.current.value = "";
     durationElement.current.value = "";
     dueDateElement.current.value = "";
