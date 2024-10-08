@@ -31,46 +31,23 @@ const tasksReducer = (currentTasks, action) => {
 export const TasksProvider = ({ children }) => {
   const [tasksList, dispatchTasks] = useReducer(tasksReducer, []);
 
-  // useEffect(() => {
-    
-  //   const fetchTasks = () => {
-  //     fetch("http://localhost:3000/tasks")
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         dispatchTasks({ type: SET_TASKS, payload: data });
-  //       })
-  //       .catch((error) => {
-  //         console.error("Failed to fetch tasks:", error);
-  //       });
-  //   };
-  
-  //   fetchTasks();
-  // }, []);
-  
-  
-  
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/tasks");
-        const data = await response.json();
-        const validatedData = data.map((task) => ({
-          ...task,
-          duration: task.duration || 0,
-          elapsedTime: task.elapsedTime || 0,
-          extraTime: task.extraTime || 0,
-        }));
-  
-        dispatchTasks({ type: SET_TASKS, payload: validatedData });
-      } catch (error) {
-        console.error("Failed to fetch tasks:", error);
-      }
+    
+    const fetchTasks = () => {
+      fetch("http://localhost:3000/tasks")
+        .then((response) => response.json())
+        .then((data) => {
+          dispatchTasks({ type: SET_TASKS, payload: data });
+        })
+        .catch((error) => {
+          console.error("Failed to fetch tasks:", error);
+        });
     };
   
     fetchTasks();
   }, []);
   
-
+  
   const addTasks = (task) => {
     fetch("http://localhost:3000/tasks", {
       method: "POST",
@@ -125,76 +102,3 @@ export const TasksProvider = ({ children }) => {
     </TasksContext.Provider>
   );
 };
-
-
-
-
-
-// import React, { createContext, useEffect, useReducer } from "react";
-// import { TasksData } from "./TasksData";
-
-// export const TasksContext = createContext({
-//   tasksList: [],
-//   addTasks: () => {},
-//   deletTask: () => {},
-// });
-
-// const ADD_TASKS = "ADD_TASKS";
-// const DELETE_TASK = "DELETE_TASK";
-// const tasksReducer = (currentTasks, action) => {
-//   if (action.type === DELETE_TASK) {
-//     return currentTasks.filter((task) => task.id !== action.payload);
-//   }else if (action.type === ADD_TASKS) {
-//     return [action.payload, ...currentTasks];
-//   } else
-//   return currentTasks;
-// };
-
-// export const TasksProvider = ({ children }) => {
-//   const Tasks = TasksData;
-//   const [tasksList, dispatchTasks] = useReducer(tasksReducer, Tasks, () => {
-//     const localTasks = localStorage.getItem("tasksList");
-//     try {
-//       return localTasks ? JSON.parse(localTasks) : Tasks;
-//     } catch (error) {
-//       console.error("Failed to parse local tasks:", error);
-//       return Tasks;
-//     }
-//   });
-
-//   useEffect(() => {
-//     try {
-//       localStorage.setItem("tasksList", JSON.stringify(tasksList));
-//     } catch (error) {
-//       console.error("Failed to save tasks to localStorage:", error);
-//     }
-//   }, [tasksList]);
-  
-//   const addTasks = (title, durationTime, dueDate, category) => {
-//     dispatchTasks({
-//       type: "ADD_TASKS",
-//       payload: {
-//         id: Date.now(),
-//         title: title,
-//         duration: durationTime,
-//         category: category,
-//         dueDate: dueDate,
-//         elapsedTime: 0,
-//         isRunning: false,
-//         extraTime:0,
-//       },
-//     });
-//   };
-
-//   const deletTask = (taskId) => {
-//     dispatchTasks({
-//       type: "DELETE_TASK",
-//       payload: taskId,
-//     });
-//   };
-//   return (
-//     <TasksContext.Provider value={{ tasksList, addTasks, deletTask }}>
-//       {children}
-//     </TasksContext.Provider>
-//   );
-// };
