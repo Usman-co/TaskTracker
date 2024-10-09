@@ -5,23 +5,17 @@ import { IoMdAdd } from "react-icons/io";
 
 const CreateTasks = () => {
   const { addTasks } = useContext(TasksContext);
-  // const navigate = useNavigate();
 
   const titleElement = useRef();
   const durationElement = useRef();
-  // const dueDateElement = useRef();
-  // const categoryElement = useRef();
 
   const handleAddTask = (event) => {
     event.preventDefault();
     const title = titleElement.current.value;
     const duration = durationElement.current.value;
-    // const dueDate = dueDateElement.current.value;
-    // const category = categoryElement.current.value;
 
     titleElement.current.value = "";
     durationElement.current.value = "";
-    // dueDateElement.current.value = "";
     if (!title || !duration ) {
       alert("Please fill all fields");
       return;
