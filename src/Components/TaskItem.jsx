@@ -12,7 +12,7 @@ const TaskItem = ({ task }) => {
   const [elapsedTime, setElapsedTime] = useState(task.elapsedTime || 0);
 
   useEffect(() => {
-    let timer;;
+    let timer;
 
     if (isRunning) {
       timer = setInterval(() => {
@@ -26,7 +26,7 @@ const TaskItem = ({ task }) => {
   }, [isRunning]);
 
   const startTimer = () => {
-    updateTask({...task , completed: false})
+    updateTask({ ...task, completed: false });
     setIsRunning(true);
   };
 
@@ -35,8 +35,7 @@ const TaskItem = ({ task }) => {
   };
 
   const taskComplete = () => {
-    
-    setIsRunning(false)
+    setIsRunning(false);
     updateTask({
       ...task,
       elapsedTime,
@@ -45,55 +44,68 @@ const TaskItem = ({ task }) => {
   };
 
   return (
-        <div className={`${task.completed && task.elapsedTime > task.duration && "bg-green-50" } ${task.completed && task.elapsedTime < task.duration && "bg-red-50" } flex flex-col p-4 border-2 border-inherit rounded-lg`}>
-          <div className="flex items-center justify-between mb-2">
-          <div className="fleX items-center space-x-4">
-        <input  type="checkbox" 
-        checked = {task.completed}
-        onChange={taskComplete} className="h-4 w-4 cursor-pointer bg-black" />
-      
-      <h3 className="font-semibold">
-        {task.title}
-      </h3>
-      </div>
-      {isRunning ? 
-      <button
-        className=" rounded bg-red-500 mx-2 text-white duration-300 h-7 w-8 my-2"
-        onClick={stopTimer}
-      >
-        <FaPause className="text-right pl-2 h-5 w-6" />
-      </button> : 
-      <button
-        className=" rounded bg-black text-white duration-300  h-7 w-8 my-2"
-        onClick={startTimer}
-      >
-        <FaPlay className="text-right pl-2 w-6" />
-      </button>}
+    <div
+      className={`${
+        task.completed && task.elapsedTime <= task.duration && "bg-green-50"
+      } ${
+        task.completed && task.elapsedTime > task.duration && "bg-red-50"
+      } flex flex-col p-4 border-2 border-inherit rounded-lg`}
+    >
+      <div className="flex items-center justify-between mb-2">
+        <div className="fleX items-center space-x-4">
+          <input
+            type="checkbox"
+            checked={task.completed}
+            onChange={taskComplete}
+            className="h-4 w-4 cursor-pointer bg-black"
+          />
+
+          <h3 className="font-semibold">{task.title}</h3>
+        </div>
+        {isRunning ? (
+          <button
+            className=" rounded bg-red-500 mx-2 text-white duration-300 h-7 w-8 my-2"
+            onClick={stopTimer}
+          >
+            <FaPause className="text-right pl-2 h-5 w-6" />
+          </button>
+        ) : (
+          <button
+            className=" rounded bg-black text-white duration-300  h-7 w-8 my-2"
+            onClick={startTimer}
+          >
+            <FaPlay className="text-right pl-2 w-6" />
+          </button>
+        )}
       </div>
       <div className="flex items-center justify-between space-x-1">
-      <p className="text-sm  flex items-center"> <CiClock2 className="mx-1"/> {timeFormat(elapsedTime)} / {timeFormat(task.duration * 60)}</p>   
+        <p className="text-sm  flex items-center">
+          <CiClock2 className="mx-1" /> {timeFormat(elapsedTime)} /
+          {timeFormat(task.duration * 60)}
+        </p>
       </div>
-      {task.completed && task.elapsedTime <= task.duration &&(
+      {task.completed && task.elapsedTime <= task.duration && (
         <span className=" text-green-600 bg-green-100 rounded">
           Great job! you completed the task on time!
         </span>
-      ) 
-      }
-      {
-        task.completed && task.elapsedTime > task.duration && <span className="bg-red-100 text-red-500"> Task not completed within planned time </span>
-      }
-      </div>
+      )}
+      {task.completed && task.elapsedTime > task.duration && (
+        <span className="bg-red-100 text-red-500">
+          Task not completed within planned time
+        </span>
+      )}
+    </div>
   );
 };
-
 
 const timeFormat = (seconds) => {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
   const remainingSeconds = seconds % 60;
-  
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`
-};
 
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
+};
 
 export default TaskItem;
