@@ -45,11 +45,12 @@ const TaskItem = ({ task }) => {
   };
 
   return (
-        <div className={`${task.completed && task.elapsedTime > task.duration && "bg-green-50" } ${task.completed && task.elapsedTime <= task.duration && "bg-red-50" } flex flex-col p-4 border-2 border-inherit rounded-lg`}>
+        <div className={`${task.completed && task.elapsedTime > task.duration && "bg-green-50" } ${task.completed && task.elapsedTime < task.duration && "bg-red-50" } flex flex-col p-4 border-2 border-inherit rounded-lg`}>
           <div className="flex items-center justify-between mb-2">
-          <div className="fle items-center space-x-4">
+          <div className="fleX items-center space-x-4">
         <input  type="checkbox" 
-        onClick={taskComplete} className="h-4 w-4 cursor-pointer bg-black" />
+        checked = {task.completed}
+        onChange={taskComplete} className="h-4 w-4 cursor-pointer bg-black" />
       
       <h3 className="font-semibold">
         {task.title}
@@ -72,14 +73,14 @@ const TaskItem = ({ task }) => {
       <div className="flex items-center justify-between space-x-1">
       <p className="text-sm  flex items-center"> <CiClock2 className="mx-1"/> {timeFormat(elapsedTime)} / {timeFormat(task.duration * 60)}</p>   
       </div>
-      {task.completed && task.elapsedTime < task.duration &&(
+      {task.completed && task.elapsedTime <= task.duration &&(
         <span className=" text-green-600 bg-green-100 rounded">
           Great job! you completed the task on time!
         </span>
       ) 
       }
       {
-        task.completed && task.elapsedTime >= task.duration && <span className="bg-red-100 text-red-500"> Task not completed within planned time </span>
+        task.completed && task.elapsedTime > task.duration && <span className="bg-red-100 text-red-500"> Task not completed within planned time </span>
       }
       </div>
   );
