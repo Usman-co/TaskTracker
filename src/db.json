@@ -1,12 +1,3 @@
 {
-  "tasks": [
-    {
-      "id": "00a8",
-      "title": "tw0",
-      "duration": "1",
-      "elapsedTime": 22,
-      "extraTime": 0,
-      "completed": true
-    }
-  ]
+  "tasks": []
 }

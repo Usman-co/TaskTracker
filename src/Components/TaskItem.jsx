@@ -64,10 +64,10 @@ const TaskItem = ({ task }) => {
           <h3 className="font-semibold">{task.title}</h3>
         </div>
        
-        <div className="space-x-4" >
+        <div className="flex space-x-4" >
         {isRunning ? (
           <button
-            className=" rounded bg-red-500 mx-2 text-white duration-300 h-7 w-8 my-2"
+            className=" rounded bg-red-500  text-white duration-300 h-7 w-8 my-2"
             onClick={stopTimer}
           >
             <FaPause className="text-right pl-2 h-5 w-6" />
@@ -80,7 +80,7 @@ const TaskItem = ({ task }) => {
             <FaPlay className="text-right pl-2 w-6" />
           </button>
         )}
-       <button className=" text-white cursor-pointer bg-red-500 rounded" onClick={() => deleteTask(task.id)}><MdDeleteForever className="text-3xl"  /></button>
+       <button className=" text-white cursor-pointer bg-red-500  my-2 px-1 rounded" onClick={() => deleteTask(task.id)}><MdDeleteForever className="text-2xl"  /></button>
          
         </div>
       </div>
