@@ -7,7 +7,7 @@ import { TasksContext } from "../store/TasksContext";
 import { CiClock2 } from "react-icons/ci";
 
 const TaskItem = ({ task }) => {
-  const { deletTask, updateTask } = useContext(TasksContext);
+  const { deleteTask, updateTask } = useContext(TasksContext);
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(task.elapsedTime || 0);
 
@@ -38,21 +38,22 @@ const TaskItem = ({ task }) => {
     setIsRunning(false);
     updateTask({
       ...task,
-      elapsedTime,
+      elapsedTime,      
       completed: true,
     });
   };
 
   return (
-    <div
-      className={`${
-        task.completed && task.elapsedTime <= task.duration && "bg-green-50"
-      } ${
-        task.completed && task.elapsedTime > task.duration && "bg-red-50"
-      } flex flex-col p-4 border-2 border-inherit rounded-lg`}
+    <div className={`flex flex-col p-4 border-2 border-inherit rounded-lg ${
+      task.completed
+        ? task.elapsedTime <= task.duration * 60
+          ? "bg-green-50"
+          : "bg-red-50"
+        : ""
+    }`}
     >
       <div className="flex items-center justify-between mb-2">
-        <div className="fleX items-center space-x-4">
+        <div className=" space-x-4">
           <input
             type="checkbox"
             checked={task.completed}
@@ -62,6 +63,8 @@ const TaskItem = ({ task }) => {
 
           <h3 className="font-semibold">{task.title}</h3>
         </div>
+       
+        <div className="space-x-4" >
         {isRunning ? (
           <button
             className=" rounded bg-red-500 mx-2 text-white duration-300 h-7 w-8 my-2"
@@ -77,6 +80,9 @@ const TaskItem = ({ task }) => {
             <FaPlay className="text-right pl-2 w-6" />
           </button>
         )}
+       <button className=" text-white cursor-pointer bg-red-500 rounded" onClick={() => deleteTask(task.id)}><MdDeleteForever className="text-3xl"  /></button>
+         
+        </div>
       </div>
       <div className="flex items-center justify-between space-x-1">
         <p className="text-sm  flex items-center">
@@ -84,16 +90,16 @@ const TaskItem = ({ task }) => {
           {timeFormat(task.duration * 60)}
         </p>
       </div>
-      {task.completed && task.elapsedTime <= task.duration && (
-        <span className=" text-green-600 bg-green-100 rounded">
-          Great job! you completed the task on time!
-        </span>
-      )}
-      {task.completed && task.elapsedTime > task.duration && (
-        <span className="bg-red-100 text-red-500">
-          Task not completed within planned time
-        </span>
-      )}
+      {task.completed && task.elapsedTime <= task.duration * 60 && (
+    <span className="text-green-600 bg-green-100 rounded">
+      Great job! You completed the task on time!
+    </span>
+  )}
+  {task.completed && task.elapsedTime > task.duration * 60 && (
+    <span className="bg-red-100 text-red-500">
+      Task not completed within planned time
+    </span>
+  )}
     </div>
   );
 };

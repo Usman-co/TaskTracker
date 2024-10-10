@@ -1,34 +1,10 @@
 {
   "tasks": [
     {
-      "id": "ab53",
-      "title": "new",
+      "id": "00a8",
+      "title": "tw0",
       "duration": "1",
-      "elapsedTime": 8,
-      "extraTime": 0,
-      "completed": true
-    },
-    {
-      "id": "6496",
-      "title": "task",
-      "duration": "2",
-      "elapsedTime": 52,
-      "extraTime": 0,
-      "completed": true
-    },
-    {
-      "id": "433d",
-      "title": "fdg",
-      "duration": "1",
-      "elapsedTime": 68,
-      "extraTime": 0,
-      "completed": true
-    },
-    {
-      "id": "6fa5",
-      "title": "dd",
-      "duration": "1",
-      "elapsedTime": 13,
+      "elapsedTime": 22,
       "extraTime": 0,
       "completed": true
     }

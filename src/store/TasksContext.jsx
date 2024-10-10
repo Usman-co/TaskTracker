@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useReducer } from "react";
 export const TasksContext = createContext({
   tasksList: [],
   addTasks: () => {},
-  deletTask: () => {},
+  deleteTask: () => {},
   updateTask: () => {}
 });
 
@@ -65,7 +65,7 @@ export const TasksProvider = ({ children }) => {
       });
   };
   
-  const deletTask = (taskId) => {
+  const deleteTask = (taskId) => {
     fetch(`http://localhost:3000/tasks/${taskId}`, {
       method: "DELETE",
     })
@@ -97,7 +97,7 @@ export const TasksProvider = ({ children }) => {
   
 
   return (
-    <TasksContext.Provider value={{ tasksList, addTasks, deletTask , updateTask}}>
+    <TasksContext.Provider value={{ tasksList, addTasks, deleteTask , updateTask}}>
       {children}
     </TasksContext.Provider>
   );
