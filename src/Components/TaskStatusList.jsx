@@ -10,10 +10,10 @@ const TaskStatusList = () => {
 
   return (
     <div className=" mt-2 border-2 border-inherit  drop-shadow-md  px-6 py-10 container mx-auto p-4 max-w-2xl">
-      <h1 className='text-2xl mb-2 font-bold'>Task Completion Chart</h1>
+      <h1 className='text-2xl mb-2 font-bold max-sm:text-lg'>Task Completion Chart</h1>
 
-      {isSwitch === "Weekly" ?   <div className='my-4 mb-6'>
-  <Bar margin={{ top: 20, right: 30, left: 20, bottom: 5 }} data={{
+      {isSwitch === "Weekly" ?   <div className='my-4 mb-6 w-full h-96'>
+  <Bar data={{
     labels:["Week 1", "Week 2", "Week 3", "Week 4"],
     datasets:[{
       label:"On time",
@@ -28,8 +28,8 @@ const TaskStatusList = () => {
   }} 
   />
   </div> : 
-      <div className='my-4 mb-6'>
-         <Bar margin={{ top: 20, right: 30, left: 20, bottom: 5 }} data={{
+      <div className='my-4 mb-6 w-full h-96'>
+         <Bar  className='mt-' data={{
     labels:["Mon", "Tue", "Wed", "Thu","Fri","Sat","Sun"],
     datasets:[{
       label:"On time",
@@ -37,7 +37,7 @@ const TaskStatusList = () => {
       backgroundColor:"#10B981",
     },{
       label:"Overdue",
-      data:[10,9,4,5,1,3,2],
+      data:[3,1,4,5,1,3,2],
       backgroundColor:"#EF4444"
     },
   ]
@@ -47,12 +47,12 @@ const TaskStatusList = () => {
       }
  
 
-  <span className=' px-2 py-4 space-x-2 bg-gray-300 rounded-md '>
-    <button className={`py-2 px-2 rounded-md text-sm ${
-            isSwitch === "Daily" ? "bg-black text-white" : "bg-white text-black"
+  <span className=' px-2 py-4 space-x-2  rounded-md max-sm:px-1 max-sm:py-2 max-sm:space-x-1'>
+    <button className={`py-2 px-2 rounded-md text-sm  max-sm:px-1 max-sm:py-1  ${
+            isSwitch === "Daily" ? "bg-black text-white" : " text-black"
           }`}  onClick={()=> {setSwitch("Daily")}}>Daily</button>
-    <button className={`py-2 px-2 rounded-md text-sm ${
-            isSwitch === "Weekly" ? "bg-black text-white" : "bg-white text-black"
+    <button className={`py-2 px-2 rounded-md text-sm max-sm:px-1 max-sm:py-1 ${
+            isSwitch === "Weekly" ? "bg-black text-white" : " text-black"
           }`}  onClick={()=> {setSwitch("Weekly")}}>Weekly</button>
     </span>
     </div>
