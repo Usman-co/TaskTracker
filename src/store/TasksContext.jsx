@@ -34,7 +34,7 @@ export const TasksProvider = ({ children }) => {
   useEffect(() => {
     
     const fetchTasks = () => {
-      fetch("https://task-traker.netlify.app/tasks")
+      fetch("https://task-traker.netlify.app")
         .then((response) => response.json())
         .then((data) => {
           dispatchTasks({ type: SET_TASKS, payload: data });
