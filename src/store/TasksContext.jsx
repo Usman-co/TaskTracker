@@ -34,7 +34,7 @@ export const TasksProvider = ({ children }) => {
   useEffect(() => {
     
     const fetchTasks = () => {
-      fetch("http://localhost:3000/tasks")
+      fetch("https://task-traker.netlify.app/tasks")
         .then((response) => response.json())
         .then((data) => {
           dispatchTasks({ type: SET_TASKS, payload: data });
@@ -49,7 +49,7 @@ export const TasksProvider = ({ children }) => {
   
   
   const addTasks = (task) => {
-    fetch("http://localhost:3000/tasks", {
+    fetch("https://task-traker.netlify.app/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const TasksProvider = ({ children }) => {
   };
   
   const deleteTask = (taskId) => {
-    fetch(`http://localhost:3000/tasks/${taskId}`, {
+    fetch(`https://task-traker.netlify.app/${taskId}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -78,7 +78,7 @@ export const TasksProvider = ({ children }) => {
   };
   
   const updateTask = (updatedTask) => {
-    fetch(`http://localhost:3000/tasks/${updatedTask.id}`, {
+    fetch(`https://task-traker.netlify.app//${updatedTask.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
