@@ -25,7 +25,6 @@ const CreateTasks = () => {
       title,
       duration,
       elapsedTime: 0,
-      extraTime: 0,
       completed: false,
     };
 

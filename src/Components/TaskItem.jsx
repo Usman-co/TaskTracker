@@ -41,6 +41,7 @@ const TaskItem = ({ task }) => {
       elapsedTime,      
       completed: true,
     });
+    console.log("Task completed:", { ...task, elapsedTime, completed: true });
   };
 
   return (
