@@ -34,7 +34,7 @@ export const TasksProvider = ({ children }) => {
   useEffect(() => {
     
     const fetchTasks = () => {
-      fetch("http://localhost:3000/tasks")
+      fetch("https://stuck-lara-workforweb-8ebfd3d1.koyeb.app/tasks")
         .then((response) => response.json())
         .then((data) => {
           dispatchTasks({ type: SET_TASKS, payload: data });
@@ -49,7 +49,7 @@ export const TasksProvider = ({ children }) => {
   
   
   const addTasks = (task) => {
-    fetch("http://localhost:3000/tasks", {
+    fetch("https://stuck-lara-workforweb-8ebfd3d1.koyeb.app/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ export const TasksProvider = ({ children }) => {
   };
   
   const deleteTask = (taskId) => {
-    fetch(`http://localhost:3000/tasks/${taskId}`, {
+    fetch(`https://stuck-lara-workforweb-8ebfd3d1.koyeb.app/tasks/${taskId}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -78,7 +78,7 @@ export const TasksProvider = ({ children }) => {
   };
   
   const updateTask = (updatedTask) => {
-    fetch(`http://localhost:3000/tasks/${updatedTask.id}`, {
+    fetch(`https://stuck-lara-workforweb-8ebfd3d1.koyeb.app/tasks/${updatedTask.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
