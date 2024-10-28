@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./App.css";
 import TasksList from "./Components/TasksList";
-import { TasksContext, TasksProvider } from "./store/TasksContext";
+import { TasksProvider } from "./store/TasksContext";
 import CreateTasks from "./Components/CreateTasks";
 import TaskStatusList from "./Components/TaskStatusList";
 
 function App() {
-  const {tasksList} = useContext(TasksContext)
   return (
     <TasksProvider>
       <div  className="text-center w-full bg-black p-4 text-white text-2xl max-md:text-xl max-sm:text-base font-bold max-sm:normal">
@@ -20,7 +19,7 @@ function App() {
         <TasksList/>
           </div>
         </div>
-        <TaskStatusList tasksList ={tasksList} />
+        <TaskStatusList />
     </TasksProvider>
   );
 }
