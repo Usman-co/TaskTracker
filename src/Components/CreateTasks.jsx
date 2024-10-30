@@ -26,8 +26,9 @@ const CreateTasks = () => {
       duration,
       elapsedTime: 0,
       completed: false,
+      date: new Date().toISOString().split('T')[0]
     };
-
+    console.log("Adding new task:", newTask);
     addTasks(newTask);
   };
   return (

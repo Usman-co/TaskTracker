@@ -36,12 +36,13 @@ const TaskItem = ({ task }) => {
 
   const taskComplete = () => {
     setIsRunning(false);
-    updateTask({
+    const updatedTask = {
       ...task,
-      elapsedTime,      
+      elapsedTime,
       completed: true,
-    });
-    console.log("Task completed:", { ...task, elapsedTime, completed: true });
+      date: task.date,
+    };
+    updateTask(updatedTask);
   };
 
   return (
