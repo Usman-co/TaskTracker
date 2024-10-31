@@ -22,15 +22,12 @@ const dailyChartData = (tasks) => {
       const taskDate = new Date(task.date);
       const dayIndex = taskDate.getDay() - 1;
 
-      // console.log(`Task Date: ${taskDate}, Day Index: ${dayIndex}`);
 
       if (dayIndex >= 0 && dayIndex < 7) {
         if (task.elapsedTime <=  parseInt(task.duration * 60)) {
           dailyData[dayIndex].onTime += 1;
-          // console.log(`Task onTime incremented on ${dailyData[dayIndex].name}`);
         } else {
           dailyData[dayIndex].overdue += 1;
-          // console.log(`Task overdue incremented on ${dailyData[dayIndex].name}`);
         }
       }
     }
@@ -73,10 +70,6 @@ const TaskStatusList = () => {
     const completedTasks = tasksList.filter((task) => task.completed);
     setDailyData(dailyChartData(completedTasks));
     setWeeklyData(weeklyChartData(completedTasks));
-    // console.log("Completed Tasks Array ", { completedTasks });
-
-
-  // console.log("Daily Data for Chart:", dailyChartData(completedTasks));
   }, [tasksList]);
 
   return (
